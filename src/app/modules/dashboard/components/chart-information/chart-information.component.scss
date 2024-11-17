@@ -1,0 +1,14 @@
+#chat-contailer {
+  margin: 35px auto;
+  display: flex;
+  padding: 0;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 398px) {
+  #chat-contailer {
+    flex-direction: column;
+   }
+}

@@ -1,0 +1,73 @@
+<mat-form-field appearance="fill">
+  <mat-label>Filter Date</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [(ngModel)]="selectedDate"
+    required
+  />
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<!-- Grid layout for showing data -->
+<mat-grid-list cols="4" rowHeight="200px" gutterSize="16px">
+  <!-- Total Cars Parked Card -->
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Total Cars Parked</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h4>{{ dashboardData.totalCarsParked }}</h4>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <!-- Total Empty Slots Card -->
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Total Empty Slots</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h4>{{ dashboardData.totalEmptySlots }}</h4>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <!-- Vehicle Types Info Card -->
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Vehicle Types</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          @for( type of vehicleTypeEnum | keyvalue;track type){
+          <li>
+            {{ type.key }}: {{ dashboardData.vehicleTypeInfo[type.value] || 0 }}
+          </li>
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="long-parking-card">
+      <mat-card-header>
+        <mat-card-title>Vehicles Parked > 2 Hours</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          @for( vehicle of dashboardData.vehiclesParkedMoreThanTwoHours;track
+          vehicle){
+          <li>{{ vehicle.licenseNumber }} - {{ vehicle.timeParked }}</li>
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<!-- Vehicles Parked for More Than 2 Hours Card -->

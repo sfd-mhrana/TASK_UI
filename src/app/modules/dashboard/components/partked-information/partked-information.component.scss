@@ -1,0 +1,25 @@
+mat-card {
+    width: 100%;
+    max-width: 500px;
+    height: 190px;
+
+    mat-card-content,
+    mat-card-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    mat-card-content {
+        height: 100%;
+    }
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul>li {
+    list-style: none;
+}

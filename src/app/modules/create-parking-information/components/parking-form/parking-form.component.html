@@ -1,0 +1,87 @@
+<mat-card class="form-card">
+  <form [formGroup]="parkingForm" (ngSubmit)="onSubmit()">
+    <div class="form-contailer">
+      <mat-form-field appearance="fill">
+        <mat-label>Vehicle License Number</mat-label>
+        <input matInput formControlName="licenseNumber" required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Vehicle Type</mat-label>
+        <mat-select formControlName="vehicleType">
+          @for( status of vehicleTypeEnum | keyvalue;track status){
+          <mat-option [value]="status.value">
+            {{ status.key }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Vehicle Owner Name</mat-label>
+        <input matInput formControlName="ownerName" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Owner Phone</mat-label>
+        <input matInput formControlName="ownerPhone" required type="number" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Owner Address</mat-label>
+        <input matInput formControlName="ownerAddress" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Entry Time</mat-label>
+        <mtx-datetimepicker #datetimePicker type="datetime">
+        </mtx-datetimepicker>
+        <input
+          [mtxDatetimepicker]="datetimePicker"
+          formControlName="entryTime"
+          matInput
+          required
+        />
+        <mtx-datetimepicker-toggle
+          [for]="datetimePicker"
+          matSuffix
+        ></mtx-datetimepicker-toggle>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Exit Time</mat-label>
+        <mtx-datetimepicker #datetimeExitPicker type="datetime">
+        </mtx-datetimepicker>
+        <input
+          [mtxDatetimepicker]="datetimeExitPicker"
+          formControlName="exitTime"
+          matInput
+        />
+        <mtx-datetimepicker-toggle
+          [for]="datetimeExitPicker"
+          matSuffix
+        ></mtx-datetimepicker-toggle>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          @for( status of parkingStatusEnum | keyvalue;track status){
+          <mat-option [value]="status.value">
+            {{ status.key }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="button-container">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="parkingForm.invalid"
+      >
+        {{ updateInformation ? "Update" : "Submit" }}
+      </button>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,24 @@
+.form-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 8px;
+}
+
+.form-contailer{
+ display: grid;
+ grid-template-columns: repeat(2, 1fr); // 3 equal-width columns
+ gap: 16px; // space between columns and rows
+}
+
+.button-container {
+  margin: 5px !important;
+  text-align: end;
+}
+
+@media only screen and (max-width: 398px) {
+  .form-contailer{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); // 3 equal-width columns
+    gap: 16px; // space between columns and rows
+   }
+}

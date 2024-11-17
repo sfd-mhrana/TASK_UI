@@ -1,0 +1,27 @@
+<div id="chat-contailer">
+  <apx-chart
+    [series]="chartOptionsBar['series']"
+    [chart]="chartOptionsBar['chart']"
+    [labels]="chartOptionsBar['labels']"
+    [responsive]="chartOptionsBar['responsive']"
+    class="pie"
+  ></apx-chart>
+  <div>
+    <select [(ngModel)]="timeRange" (change)="updateChart()">
+      <option value="daily">Daily</option>
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+    </select>
+      <apx-chart
+      [series]="chartOptionsLine['series']"
+      [chart]="chartOptionsLine['chart']"
+      [xaxis]="chartOptionsLine['xaxis']"
+      [dataLabels]="chartOptionsLine['dataLabels']"
+      [grid]="chartOptionsLine['grid']"
+      [stroke]="chartOptionsLine['stroke']"
+      [title]="chartOptionsLine['title']"
+      class="line"
+    ></apx-chart>
+  </div>
+ 
+</div>
